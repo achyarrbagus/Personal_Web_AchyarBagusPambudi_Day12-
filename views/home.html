@@ -76,9 +76,18 @@
       </div>
     </nav>
     <!-- akhir navbar -->
+    {{if $.Title.FlashMessage}}
+    <div class="alert alert-success text-center" style="margin-top: 50px !important;" role="alert">
+      <p>
+        {{$.Title.FlashMessage}}
+      </p>
+    </div>
+   {{end}}
+
     <div class="main-content container-fluid">
       <div class="card-profile container p-5 mb-5">
         <div class="row">
+      
           <div class="left-side col-md-8">
             <h1 class="fs-1 mt-5">Hi Welcome to my Hut</h1>
             <p class="py-3 text-md-start mt-5">

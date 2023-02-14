@@ -8,6 +8,7 @@ import (
 	"personal-web/connec"
 	"personal-web/middleware"
 	"strconv"
+	"strings"
 	"text/template"
 	"time"
 
@@ -25,8 +26,9 @@ type MetaData struct {
 }
 
 var Data = map[string]interface{}{
-	"Title":   "Personal Web",
-	"IsLogin": false,
+	"Title":        "Personal Web",
+	"IsLogin":      false,
+	"FlashMessage": "",
 }
 
 type User struct {
@@ -133,7 +135,7 @@ func loginButton(w http.ResponseWriter, r *http.Request) {
 	session.Values["Name"] = User.name
 	session.Options.MaxAge = 1000
 
-	session.AddFlash("login succes")
+	session.AddFlash("login succes", "message")
 	session.Save(r, w)
 
 	http.Redirect(w, r, "/", http.StatusMovedPermanently)
@@ -440,6 +442,19 @@ func home(w http.ResponseWriter, r *http.Request) {
 		sqlLeftJoin = "SELECT tb_project.id,project_name, start_date,end_date,content,technologies,images,tb_users.name as author_id FROM public.tb_project LEFT JOIN tb_users ON tb_project.author_id = tb_users.id"
 		rows, _ = connec.Conn.Query(context.Background(), sqlLeftJoin)
 	}
+
+	fm := Session.Flashes("message")
+	var Flashes []string
+	fmt.Println(fm)
+	if len(fm) > 0 {
+		sessions.Save(r, w)
+
+		for _, fls := range fm {
+			Flashes = append(Flashes, fls.(string))
+		}
+
+	}
+	Data["FlashMessage"] = strings.Join(Flashes, "")
 
 	for rows.Next() {
 		each := Blog{}
