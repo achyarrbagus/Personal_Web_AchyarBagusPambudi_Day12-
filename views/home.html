@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{$.Title.Title}}</title>
+
+    <!-- my css -->
+    <link rel="stylesheet" href="/public/assets/css/home.css" />
+    <!-- link boostrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" />
+    <!-- cdn fontawesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fs-5 fixed-top">
+      <div class="container">
+        <a class="navbar-brand me-5" href="#">
+          <img src="/public/assets/images/brandred.png" alt="Bootstrap" width="45" height="34" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/">Home</a>
+            </li>
+            {{if $.Title.IsLogin}}
+            <li class="nav-item">
+              <a class="nav-link" href="/add-project">Add project</a>
+            </li>
+            {{end}}
+          </ul>
+          <div class="d-flex">
+            {{if $.Title.IsLogin}}
+            <ul class="navbar-nav me-3">
+              <li class="nav-item">
+                <a href="/logout/clear" class="nav-link active" aria-current="page">Hallo, {{$.Title.UserName}}</a>
+            </li>
+              <li class="nav-item">
+                  <a href="/logout/clear" class="nav-link active" aria-current="page">Logout</a>
+              </li>
+          </ul>
+          {{else}}
+          <ul class="navbar-nav me-3">
+            <li class="nav-item">
+                <a href="/register" class="nav-link">Register</a>
+            </li>
+            <li class="nav-item">
+                <a href="/login" class="nav-link active" aria-current="page">Login</a>
+            </li>
+        </ul>
+        {{end}}
+            <button class="" style="background-color: #fc6648 !important ; border: none; border-radius: 10px;" >
+              <a href="/contact-me" style="text-decoration: none; color: white">Contact Me</a>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- akhir navbar -->
+    <div class="main-content container-fluid">
+      <div class="card-profile container p-5 mb-5">
+        <div class="row">
+          <div class="left-side col-md-8">
+            <h1 class="fs-1 mt-5">Hi Welcome to my Hut</h1>
+            <p class="py-3 text-md-start mt-5">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel quisquam veniam odit officiis nisi minima quod quos,
+              recusandae omnis incidunt sit saepe fugit. Assumenda, vitae quod eos recusandae, quam ipsa necessitatibus distinctio
+              voluptates, impedit sint rem neque sequi sit mollitia sunt nobis rerum provident? Non quidem accusantium eligendi
+              neolores nobis, quibusdam repellat minima nulla natus impedit dolor reiciendis eveniet voluptates unde qui ipsam?
+            </p>
+            <div class="contact-section mt-4">
+              <button class="button-contact me-3" style="font-size: 20px;">contact</button>
+              <button class="button-cv " style="font-size: 20px;">donwload cv <i class="fa-solid fa-arrow-down" ></i></button>
+            </div>
+            <div class="sosmed-section fs-1 mt-5">
+              <ul class="d-flex">
+                <li class="anchor">
+                  <a href="https://www.instagram.com/achyarrbagus51/?hl=id" style="color: black !important;" class="fs-2"><i class="fa-brands fa-instagram"></i></a>
+                </li>
+                <li>
+                  <a href="https://discord.gg/fsWPdmUD" style="color:black !important"><i class="fa-brands fa-discord fs-2" ></i></a>
+                </li>
+                <li>
+                  <a href="https://github.com/achyarrbagus" style="color:black !important" > <i class="fa-brands fa-github fs-2" ></i></a>
+                </li>
+                <li>
+                  <a href="https://wa.link/i7zi7c" style="color:black !important" class="fs-2" ><i class="fa-brands fa-whatsapp"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="right-side col-md-4">
+            <div class="right-side-content m-auto">
+              <div class="foto-bio">
+                <img src="/public/assets/images/my-foto.jpg" alt="" width="100%" class="img-fluid rounded-2" />
+              </div>
+              <div class="deskrip-foto mt-3">
+                <div class="my-bio">
+                  <h1 class="fs-1">Achyar Bagus</h1>
+                  <p class="fs-5">fullStack</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="my-project container mt-5">
+      <div class="title-project p-5">
+        <h1 class="fs-1 text-center">MY PROJECT</h1>
+      </div>
+      <!-- dynamic content -->
+
+      <div class="all-card row gap-5 ">
+        {{range $index, $data := .Data}}
+        <div class="card card-project col-md-3 py-4">
+          <div class="card-img">
+            <img src="http://localHost:5000/uploads/{{$data.Images}}" class="rounded-2 img-fluid" />
+          </div>
+          <div class="">
+            <div class="card-title mt-3">
+              <h5 class="fs-4"><a href="/blog-content/{{$data.Id}}">{{$data.Title}}</a></h5>
+            </div>
+            <div class="duration">
+              <p>{{$data.Deference}} | {{$data.Author}}</p>
+            </div>
+            <div class="deskrip-card">
+              <p class="card-text flex-wrap">{{$data.Content}}</p>
+            </div>
+            <div class="technology-card flex-wrap">
+              <ul class="d-flex">
+                {{range $index,$data := $data.Thecnologies}}
+                <li><img src="/public/assets/images/teknology/{{$data}}.svg" alt="" width="45px" /></li>
+                {{end}}
+              </ul>
+            </div>
+            <div class="button-grup d-flex justify-content-evenly">
+              {{if $.Title.IsLogin}}
+              <a href="/edit-content/{{$data.Id}}" class="button-edt">Edit</a>
+              <a href="/delete-content/{{$data.Id}}" class="button-dlt">delete</a>
+              {{end}}
+            </div>
+          </div>
+        </div>
+        {{end}}
+        <!-- end dynamic content -->
+
+        <!-- <div class="card card-project col-md-3 py-4">
+          <div class="card-img">
+            <img src="/public/assets/images/card-1.jpg" class="rounded-2 img-fluid" />
+          </div>
+          <div class="">
+            <div class="card-title mt-3">
+              <h5 class="fs-4"><a href="">Card title</a></h5>
+            </div>
+            <div class="duration">
+              <p>Durasi:</p>
+            </div>
+            <div class="deskrip-card">
+              <p class="card-text flex-wrap">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae ipsum consequatur repudiandae. Repellat
+                commodi sapiente consequuntur est eos? Inventore, incidunt! Some quick example text to build on the card title and
+                make up the bulk of the card's content.
+              </p>
+            </div>
+            <div class="technology-card">
+              <ul>
+                <li><img src="/public/assets/images/teknology/next-logo.svg" alt="" width="45px" /></li>
+                <li><img src="/public/assets/images/teknology/react-logo.svg" alt="" width="45px" /></li>
+                <li><img src="/public/assets/images/teknology/node-logo.svg" alt="" width="45px" /></li>
+                <li><img src="/public/assets/images/teknology/typeScript-logo.svg" alt="" width="45px" /></li>
+              </ul>
+            </div>
+            <div class="button-grup d-flex justify-content-evenly">
+              <a href="#" class="button-edt">Edit</a>
+              <a href="#" class="button-dlt">delete</a>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

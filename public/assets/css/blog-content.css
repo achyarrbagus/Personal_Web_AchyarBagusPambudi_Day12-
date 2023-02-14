@@ -1,0 +1,10 @@
+.container-article {
+  margin-top: 100px !important;
+}
+body {
+  background-color: hsl(210deg 17% 91%) !important;
+}
+.article-section p {
+  text-align: justify !important;
+  text-align: 16px !important;
+}

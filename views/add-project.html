@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--  -->
+    <link rel="stylesheet" href="/public/assets/css/add-project.css" />
+    <link rel="stylesheet" href="/public/assets/css/navbar.css" />
+    <!-- lick cdn -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" />
+    <!-- cdn fontawesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>{{.Title.Title}}</title>
+  </head>
+  <body class="" style="background-color: #e3e7eb">
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fs-5 fixed-top">
+      <div class="container">
+        <a class="navbar-brand me-5" href="#">
+          <img src="/public/assets/images/brandred.png" alt="Bootstrap" width="45" height="34" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/add-project">Add project</a>
+            </li>
+          </ul>
+          <div class="d-flex">
+            <ul class="navbar-nav me-3">
+              <li class="nav-item">
+                  <a href="/register" class="nav-link">Register</a>
+              </li>
+              <li class="nav-item">
+                  <a href="/login" class="nav-link active" aria-current="page">Login</a>
+              </li>
+          </ul>
+            <button class="" style="background-color: #fc6648 !important ; border: none; border-radius: 10px;">
+              <a href="/contact-me" style="text-decoration: none; color: white" >Contact Me</a>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- akhir navbar -->
+    <div class="container w-50" style="margin-top: 100px">
+      <form class="m-auto" enctype="multipart/form-data" action="/add-project/blog" method="post">
+        <div class="header-form"><h1 class="text-center fs-1">ADD MY PROJECT</h1></div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" name="" class="form-label">Project Name</label>
+          <input type="text" class="form-control" name="projectName" id="projectName" aria-describedby="" value="" />
+        </div>
+        <div class="date-section d-flex gap-1 mb-3">
+          <div class="start-date" style="width: 50%">
+            <label for="exampleInputEmail1" class="form-label">Start Date</label>
+            <input type="date" class="form-control" id="startDate" name="startDate" aria-describedby="" />
+          </div>
+          <div class="end-date" style="width: 50%">
+            <label for="exampleInputEmail1" class="form-label">End Date</label>
+            <input type="date" class="form-control" id="endDate" name="endDate" aria-describedby="" />
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="description-project" class="form-label">Description</label>
+          <textarea
+            class="form-control"
+            id="descriptionProject"
+            name="projectBlog"
+            style="height: 100px; resize: none"
+          ></textarea>
+        </div>
+        <div><h5>Technologies</h5></div>
+        <div class="form-check mb-3 d-flex gap-5 w-75 justify-content-between">
+          <div class="left-side">
+            <div class="react-tc mb-4">
+              <label for="">React js</label>
+              <input class="form-check-input"  name="thecnologies"  type="checkbox" id="checkBoxReact" value="reactLogo" />
+            </div>
+            <div class="node-tc">
+              <label for="">Node js</label>
+              <input class="form-check-input" name="thecnologies" type="checkbox" id="checkBoxNode" value="nodeLogo" />
+            </div>
+          </div>
+          <div class="right-side">
+            <div class="golang-tc mb-4">
+              <label for="">Golang</label>
+              <input class="form-check-input" name="thecnologies" type="checkbox" id="checkBoxGolang" value="goLogo" />
+            </div>
+            <div class="laravel-tc">
+              <label for="">Laravel</label>
+              <input class="form-check-input" name="thecnologies" type="checkbox" id="checkBoxLaravel" value="laravelLogo" />
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="formFile" class="form-label">Upload images</label>
+          <input class="form-control" name="uploadImage" type="file" id="formFile" />
+        </div>
+        <div class="d-flex justify-content-end">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+    <!-- form -->
+    <!--end form  -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <!-- <script src="/public/assets/js/add-project.js"></script> -->
+  </body>
+</html>

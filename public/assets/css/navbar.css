@@ -1,0 +1,14 @@
+/* nav css */
+.button-custom-nav {
+  background-color: #fc6648 !important;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+body {
+  height: 400vh;
+}
+
+/* end nav  */
